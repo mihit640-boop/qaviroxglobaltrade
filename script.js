@@ -1,0 +1,4 @@
+function quote(p){document.getElementById('product').value=p;document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
+function findProducts(){const q=document.getElementById('search').value.toLowerCase().trim();document.querySelectorAll('.product').forEach(x=>x.style.display=(!q||x.dataset.search.includes(q))?'':'none');document.getElementById('products').scrollIntoView({behavior:'smooth'});}
+document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')findProducts()});
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();document.getElementById('msg').textContent='Demo enquiry submitted. Connect this form to a real email/CRM before launch.';});
