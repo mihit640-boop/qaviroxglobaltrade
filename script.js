@@ -1,3 +1,46 @@
+
+/* QAVIROX account authentication UI */
+(() => {
+  const modal = document.getElementById('authModal');
+  if (!modal) return;
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const loginMsg = document.getElementById('loginMsg');
+  const registerMsg = document.getElementById('registerMsg');
+  const config = window.QAVIROX_SUPABASE_CONFIG || {};
+  let client = null;
+  if (config.url && config.publishableKey && window.supabase) {
+    client = window.supabase.createClient(config.url, config.publishableKey);
+  }
+  const open = (mode='login') => { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); switchMode(mode); };
+  const close = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); };
+  const switchMode = (mode) => {
+    const isLogin = mode === 'login';
+    loginForm.classList.toggle('hidden', !isLogin);
+    registerForm.classList.toggle('hidden', isLogin);
+    document.querySelectorAll('[data-auth-tab]').forEach(b => b.classList.toggle('active', b.dataset.authTab === mode));
+    loginMsg.textContent = ''; registerMsg.textContent = '';
+  };
+  document.querySelectorAll('[data-auth]').forEach(b => b.addEventListener('click', () => open(b.dataset.auth)));
+  document.querySelectorAll('[data-auth-tab]').forEach(b => b.addEventListener('click', () => switchMode(b.dataset.authTab)));
+  document.getElementById('authClose')?.addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  loginForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!client) { loginMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
+    loginMsg.textContent = 'Signing in…';
+    const { error } = await client.auth.signInWithPassword({ email: loginEmail.value.trim(), password: loginPassword.value });
+    loginMsg.textContent = error ? error.message : 'Login successful. Welcome to QAVIROX!';
+  });
+  registerForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!client) { registerMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
+    registerMsg.textContent = 'Creating account…';
+    const { error } = await client.auth.signUp({ email: registerEmail.value.trim(), password: registerPassword.value, options: { data: { full_name: registerName.value.trim() }, emailRedirectTo: window.location.origin + '/' } });
+    registerMsg.textContent = error ? error.message : 'Registration successful. Check your email to verify your account.';
+  });
+})();
+
 const products = window.QAVIROX_PRODUCTS || [];
 const grid = document.getElementById('productsGrid');
 const none = document.getElementById('none');
