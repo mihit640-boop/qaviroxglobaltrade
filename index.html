@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="QAVIROX Global Trade — Indian spices, grains, pulses and food products for global buyers"><title>QAVIROX Global Trade | Indian Spices, Pulses & Grains</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
 <div class="topbar"><span>🌿 Connecting Quality Across Borders</span><span>✉ mihitkashyap3315@gmail.com · ☎ +91 9973879560</span></div>
-<header><a class="brand" href="#home"><img src="assets/logo.png" alt="QAVIROX Global Trade"></a><div class="promise">“Quality Products<br><b>Stronger Connections</b><br>A Better Tomorrow”</div><div class="headright"><div class="account"><button class="account-link" type="button" data-auth="login">Login</button> <span>|</span> <button class="account-link" type="button" data-auth="register">Register</button></div><div class="search"><input id="search" placeholder="Search 57+ products..."><button type="button">⌕</button></div><a class="btn small" href="#contact">Request a Quote</a></div></header>
+<header><a class="brand" href="#home"><img src="assets/logo.png" alt="QAVIROX Global Trade"></a><div class="promise">“Quality Products<br><b>Stronger Connections</b><br>A Better Tomorrow”</div><div class="headright"><div class="account"><button class="account-link" type="button" data-auth="login" id="loginLink">Login</button> <span id="accountSep">|</span> <button class="account-link" type="button" data-auth="register" id="registerLink">Register</button><button class="account-link hidden" type="button" id="profileLink">My Account</button></div><div class="search"><input id="search" placeholder="Search 57+ products..."><button type="button">⌕</button></div><a class="btn small" href="#contact">Request a Quote</a></div></header>
 <nav><button id="menu">☰</button><div id="links"><a class="active" href="#home">Home</a><a href="#about">About Us</a><a href="#products">Our Products</a><a href="#countries">Export Countries</a><a href="#why">Why Choose Us</a><a href="#blog">Blog</a><a href="#contact">Contact Us</a></div></nav>
 <section id="home" class="hero"><div class="heroimg"></div><div class="shade"></div><div class="heroText"><small>QAVIROX GLOBAL TRADE</small><h1>INDIAN QUALITY<br>FOR A <span>GLOBAL TOMORROW</span></h1><p>Premium Spices, Pulses, Grains &amp; Food Products<br>From India to the World</p><a class="btn" href="#products">Explore Our Products →</a><div class="trust"><div>◒<b>Quality Focused</b></div><div>◇<b>Buyer Friendly</b></div><div>◎<b>Global Supply</b></div></div></div></section>
 <section id="products" class="section products-section"><div class="sectitle"><i></i><div><small>OUR PRODUCTS</small><h2>India’s Finest. Ready for the World.</h2><p>Explore our growing catalogue of Indian spices, pulses, grains, millets, seeds and food products.</p></div><i></i></div>
@@ -31,6 +31,36 @@
       <div class="auth-msg" id="registerMsg"></div>
     </form>
     <p class="auth-note">Secure customer accounts are powered by Supabase Auth.</p>
+  </div>
+</div>
+<div class="profile-modal" id="profileModal" aria-hidden="true">
+  <div class="profile-card">
+    <button class="profile-close" id="profileClose" type="button">×</button>
+    <div class="profile-head">
+      <div class="profile-avatar" id="profileAvatar">Q</div>
+      <div>
+        <span class="profile-kicker">BUYER ACCOUNT</span>
+        <h2 id="profileName">QAVIROX Buyer</h2>
+        <p id="profileEmail">buyer@example.com</p>
+      </div>
+    </div>
+    <div class="profile-grid">
+      <div><span>Account Type</span><strong>Buyer</strong></div>
+      <div><span>Member Status</span><strong class="profile-status">Active</strong></div>
+      <div><span>Company</span><strong id="profileCompany">Not added</strong></div>
+      <div><span>Preferred Contact</span><strong>Email</strong></div>
+    </div>
+    <div class="buyer-panel">
+      <span class="profile-kicker">BUYER SERVICES</span>
+      <h3>Welcome to QAVIROX Global Trade</h3>
+      <p>Explore our Indian product catalogue, request product details or send an enquiry directly to our trade team.</p>
+      <div class="profile-actions">
+        <a class="btn" href="#products" id="profileProducts">Explore Products →</a>
+        <a class="profile-outline" href="#contact" id="profileQuote">Request a Quote</a>
+        <button class="profile-logout" type="button" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+    <div class="profile-msg" id="profileMsg"></div>
   </div>
 </div>
 <div class="modal" id="productModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div class="modal-image"><img id="modalImg" alt=""></div><div class="modal-info"><span class="modal-cat" id="modalCat"></span><h2 id="modalTitle"></h2><h4 id="modalLocal"></h4><p id="modalDesc"></p><div class="detail-grid"><div><b>Origin</b><span>India</span></div><div><b>Available Form</b><span id="modalForm">Whole / Powder as applicable</span></div><div><b>Packing</b><span>25 kg / 50 kg / Custom</span></div><div><b>MOQ</b><span>On Request</span></div><div><b>Quality / Grade</b><span>As per buyer specification</span></div><div><b>Supply</b><span>Export enquiry based</span></div></div><a class="btn" id="modalQuote" href="#contact">Request a Quote →</a></div></div></div>

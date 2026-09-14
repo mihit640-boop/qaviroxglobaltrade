@@ -1,5 +1,4 @@
-
-/* QAVIROX account authentication UI */
+/* QAVIROX account authentication + buyer profile */
 (() => {
   const modal = document.getElementById('authModal');
   if (!modal) return;
@@ -7,40 +6,149 @@
   const registerForm = document.getElementById('registerForm');
   const loginMsg = document.getElementById('loginMsg');
   const registerMsg = document.getElementById('registerMsg');
+  const profileModal = document.getElementById('profileModal');
+  const profileName = document.getElementById('profileName');
+  const profileEmail = document.getElementById('profileEmail');
+  const profileAvatar = document.getElementById('profileAvatar');
+  const profileMsg = document.getElementById('profileMsg');
+  const loginLink = document.getElementById('loginLink');
+  const registerLink = document.getElementById('registerLink');
+  const accountSep = document.getElementById('accountSep');
+  const profileLink = document.getElementById('profileLink');
   const config = window.QAVIROX_SUPABASE_CONFIG || {};
   let client = null;
+
   if (config.url && config.publishableKey && window.supabase) {
     client = window.supabase.createClient(config.url, config.publishableKey);
   }
-  const open = (mode='login') => { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); switchMode(mode); };
-  const close = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); };
+
+  const open = (mode='login') => {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    switchMode(mode);
+  };
+  const close = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  };
   const switchMode = (mode) => {
     const isLogin = mode === 'login';
     loginForm.classList.toggle('hidden', !isLogin);
     registerForm.classList.toggle('hidden', isLogin);
     document.querySelectorAll('[data-auth-tab]').forEach(b => b.classList.toggle('active', b.dataset.authTab === mode));
-    loginMsg.textContent = ''; registerMsg.textContent = '';
+    loginMsg.textContent = '';
+    registerMsg.textContent = '';
   };
+
+  const openProfile = (user) => {
+    if (!user || !profileModal) return;
+    const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'QAVIROX Buyer';
+    profileName.textContent = name;
+    profileEmail.textContent = user.email || '';
+    profileAvatar.textContent = name.trim().charAt(0).toUpperCase() || 'Q';
+    profileMsg.textContent = '';
+    profileModal.classList.add('open');
+    profileModal.setAttribute('aria-hidden','false');
+  };
+  const closeProfile = () => {
+    profileModal?.classList.remove('open');
+    profileModal?.setAttribute('aria-hidden','true');
+  };
+  const setLoggedInUI = (user) => {
+    const loggedIn = !!user;
+    loginLink?.classList.toggle('hidden', loggedIn);
+    registerLink?.classList.toggle('hidden', loggedIn);
+    accountSep?.classList.toggle('hidden', loggedIn);
+    profileLink?.classList.toggle('hidden', !loggedIn);
+    if (loggedIn) {
+      profileLink.textContent = 'My Account';
+    }
+  };
+
   document.querySelectorAll('[data-auth]').forEach(b => b.addEventListener('click', () => open(b.dataset.auth)));
   document.querySelectorAll('[data-auth-tab]').forEach(b => b.addEventListener('click', () => switchMode(b.dataset.authTab)));
   document.getElementById('authClose')?.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  profileLink?.addEventListener('click', async () => {
+    if (!client) return open('login');
+    const { data } = await client.auth.getUser();
+    if (data?.user) openProfile(data.user);
+    else open('login');
+  });
+  document.getElementById('profileClose')?.addEventListener('click', closeProfile);
+  profileModal?.addEventListener('click', e => { if (e.target === profileModal) closeProfile(); });
+  document.getElementById('profileProducts')?.addEventListener('click', closeProfile);
+  document.getElementById('profileQuote')?.addEventListener('click', closeProfile);
+
   loginForm.addEventListener('submit', async e => {
     e.preventDefault();
-    if (!client) { loginMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
+    if (!client) { loginMsg.textContent = 'Account system is unavailable. Please try again later.'; return; }
     loginMsg.textContent = 'Signing in…';
-    const { error } = await client.auth.signInWithPassword({ email: loginEmail.value.trim(), password: loginPassword.value });
-    loginMsg.textContent = error ? error.message : 'Login successful. Welcome to QAVIROX Global Trade!';
+    const { data, error } = await client.auth.signInWithPassword({
+      email: document.getElementById('loginEmail').value.trim(),
+      password: document.getElementById('loginPassword').value
+    });
+    if (error) {
+      loginMsg.textContent = error.message;
+      return;
+    }
+    loginMsg.textContent = 'Login successful. Opening your buyer profile…';
+    setLoggedInUI(data.user);
+    setTimeout(() => { close(); openProfile(data.user); }, 350);
   });
+
   registerForm.addEventListener('submit', async e => {
     e.preventDefault();
-    if (!client) { registerMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
+    if (!client) { registerMsg.textContent = 'Account system is unavailable. Please try again later.'; return; }
     registerMsg.textContent = 'Creating account…';
-    const { error } = await client.auth.signUp({ email: registerEmail.value.trim(), password: registerPassword.value, options: { data: { full_name: registerName.value.trim() }, emailRedirectTo: window.location.origin + '/' } });
-    registerMsg.textContent = error ? error.message : 'Registration successful. Please check your email to verify your account.';
+    const { data, error } = await client.auth.signUp({
+      email: document.getElementById('registerEmail').value.trim(),
+      password: document.getElementById('registerPassword').value,
+      options: {
+        data: { full_name: document.getElementById('registerName').value.trim() },
+        emailRedirectTo: window.location.origin + '/'
+      }
+    });
+    if (error) {
+      registerMsg.textContent = error.message;
+      return;
+    }
+    if (data.user && data.session) {
+      setLoggedInUI(data.user);
+      registerMsg.textContent = 'Account created. Opening your buyer profile…';
+      setTimeout(() => { close(); openProfile(data.user); }, 350);
+    } else {
+      registerMsg.textContent = 'Account created. Please verify your email, then log in to open your buyer profile.';
+    }
   });
-})();
 
+  document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+    if (!client) return;
+    profileMsg.textContent = 'Signing out…';
+    const { error } = await client.auth.signOut();
+    if (error) {
+      profileMsg.textContent = error.message;
+      return;
+    }
+    setLoggedInUI(null);
+    closeProfile();
+    open('login');
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      close();
+      closeProfile();
+    }
+  });
+
+  if (client) {
+    client.auth.getUser().then(({data}) => {
+      if (data?.user) setLoggedInUI(data.user);
+    });
+    client.auth.onAuthStateChange((_event, session) => setLoggedInUI(session?.user || null));
+  }
+})();
 const products = window.QAVIROX_PRODUCTS || [];
 const grid = document.getElementById('productsGrid');
 const none = document.getElementById('none');
