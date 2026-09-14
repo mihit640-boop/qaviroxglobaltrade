@@ -30,14 +30,14 @@
     if (!client) { loginMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
     loginMsg.textContent = 'Signing in…';
     const { error } = await client.auth.signInWithPassword({ email: loginEmail.value.trim(), password: loginPassword.value });
-    loginMsg.textContent = error ? error.message : 'Login successful. Welcome to QAVIROX!';
+    loginMsg.textContent = error ? error.message : 'Login successful. Welcome to QAVIROX Global Trade!';
   });
   registerForm.addEventListener('submit', async e => {
     e.preventDefault();
     if (!client) { registerMsg.textContent = 'Account system is being connected. Please try again after setup.'; return; }
     registerMsg.textContent = 'Creating account…';
     const { error } = await client.auth.signUp({ email: registerEmail.value.trim(), password: registerPassword.value, options: { data: { full_name: registerName.value.trim() }, emailRedirectTo: window.location.origin + '/' } });
-    registerMsg.textContent = error ? error.message : 'Registration successful. Check your email to verify your account.';
+    registerMsg.textContent = error ? error.message : 'Registration successful. Please check your email to verify your account.';
   });
 })();
 
@@ -102,6 +102,21 @@ search?.addEventListener('input',render);
 document.getElementById('menu')?.addEventListener('click',()=>document.getElementById('links').classList.toggle('open'));
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
 
-document.getElementById('form')?.addEventListener('submit',e=>{e.preventDefault(); document.getElementById('msg').innerHTML='<b>Thank you!</b> Your enquiry has been captured for this demo website. Connect a real email/CRM before commercial launch.'; e.target.reset();});
+document.getElementById('form')?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  const name=f.querySelector('input[placeholder="Your Name"]')?.value.trim()||'';
+  const email=f.querySelector('input[placeholder="Email Address"]')?.value.trim()||'';
+  const company=f.querySelector('input[placeholder="Company Name"]')?.value.trim()||'';
+  const product=f.querySelector('input[placeholder="Product interested in"]')?.value.trim()||'';
+  const enquiry=f.querySelector('textarea')?.value.trim()||'';
+  const subject=encodeURIComponent('QAVIROX Global Trade — Product Enquiry');
+  const body=encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProduct: ${product}\n\nEnquiry:\n${enquiry}`
+  );
+  window.location.href=`mailto:mihitkashyap3315@gmail.com?subject=${subject}&body=${body}`;
+  document.getElementById('msg').innerHTML='<b>Thank you!</b> Your email draft is ready. Please press Send in your email app to submit the enquiry.';
+  f.reset();
+});
 
 render();
