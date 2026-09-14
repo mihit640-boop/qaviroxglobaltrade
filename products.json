@@ -1,0 +1,344 @@
+[
+  {
+    "name": "Turmeric",
+    "local": "Haldi",
+    "cat": "spice",
+    "image": "assets/turmeric.jpg"
+  },
+  {
+    "name": "Red Chilli",
+    "local": "Lal Mirch",
+    "cat": "spice",
+    "image": "assets/red-chilli.jpg"
+  },
+  {
+    "name": "Cumin",
+    "local": "Jeera",
+    "cat": "spice",
+    "image": "assets/cumin.jpg"
+  },
+  {
+    "name": "Black Pepper",
+    "local": "Kali Mirch",
+    "cat": "spice",
+    "image": "assets/black-pepper.jpg"
+  },
+  {
+    "name": "Coriander Seeds",
+    "local": "Dhania",
+    "cat": "spice",
+    "image": "assets/catalogue/coriander-seeds.svg"
+  },
+  {
+    "name": "Cardamom",
+    "local": "Elaichi",
+    "cat": "spice",
+    "image": "assets/catalogue/cardamom.svg"
+  },
+  {
+    "name": "Cloves",
+    "local": "Laung",
+    "cat": "spice",
+    "image": "assets/catalogue/cloves.svg"
+  },
+  {
+    "name": "Cinnamon",
+    "local": "Dalchini",
+    "cat": "spice",
+    "image": "assets/catalogue/cinnamon.svg"
+  },
+  {
+    "name": "Fennel Seeds",
+    "local": "Saunf",
+    "cat": "spice",
+    "image": "assets/catalogue/fennel-seeds.svg"
+  },
+  {
+    "name": "Fenugreek Seeds",
+    "local": "Methi",
+    "cat": "spice",
+    "image": "assets/catalogue/fenugreek-seeds.svg"
+  },
+  {
+    "name": "Mustard Seeds",
+    "local": "Rai",
+    "cat": "spice",
+    "image": "assets/catalogue/mustard-seeds.svg"
+  },
+  {
+    "name": "Ajwain",
+    "local": "Carom Seeds",
+    "cat": "spice",
+    "image": "assets/catalogue/ajwain.svg"
+  },
+  {
+    "name": "Nigella Seeds",
+    "local": "Kalonji",
+    "cat": "spice",
+    "image": "assets/catalogue/nigella-seeds.svg"
+  },
+  {
+    "name": "Bay Leaf",
+    "local": "Tej Patta",
+    "cat": "spice",
+    "image": "assets/catalogue/bay-leaf.svg"
+  },
+  {
+    "name": "Star Anise",
+    "local": "Star Anise",
+    "cat": "spice",
+    "image": "assets/catalogue/star-anise.svg"
+  },
+  {
+    "name": "Nutmeg",
+    "local": "Jaiphal",
+    "cat": "spice",
+    "image": "assets/catalogue/nutmeg.svg"
+  },
+  {
+    "name": "Mace",
+    "local": "Javitri",
+    "cat": "spice",
+    "image": "assets/catalogue/mace.svg"
+  },
+  {
+    "name": "Dry Ginger",
+    "local": "Saunth",
+    "cat": "spice",
+    "image": "assets/catalogue/dry-ginger.svg"
+  },
+  {
+    "name": "Asafoetida",
+    "local": "Hing",
+    "cat": "spice",
+    "image": "assets/catalogue/asafoetida.svg"
+  },
+  {
+    "name": "Basmati Rice",
+    "local": "Basmati",
+    "cat": "grain",
+    "image": "assets/catalogue/basmati-rice.svg"
+  },
+  {
+    "name": "Non-Basmati Rice",
+    "local": "Rice",
+    "cat": "grain",
+    "image": "assets/catalogue/non-basmati-rice.svg"
+  },
+  {
+    "name": "Wheat",
+    "local": "Gehu",
+    "cat": "grain",
+    "image": "assets/catalogue/wheat.svg"
+  },
+  {
+    "name": "Maize",
+    "local": "Corn",
+    "cat": "grain",
+    "image": "assets/catalogue/maize.svg"
+  },
+  {
+    "name": "Barley",
+    "local": "Jau",
+    "cat": "grain",
+    "image": "assets/catalogue/barley.svg"
+  },
+  {
+    "name": "Sorghum",
+    "local": "Jowar",
+    "cat": "grain",
+    "image": "assets/catalogue/sorghum.svg"
+  },
+  {
+    "name": "Pearl Millet",
+    "local": "Bajra",
+    "cat": "grain",
+    "image": "assets/catalogue/pearl-millet.svg"
+  },
+  {
+    "name": "Finger Millet",
+    "local": "Ragi",
+    "cat": "grain",
+    "image": "assets/catalogue/finger-millet.svg"
+  },
+  {
+    "name": "Foxtail Millet",
+    "local": "Kangni",
+    "cat": "grain",
+    "image": "assets/catalogue/foxtail-millet.svg"
+  },
+  {
+    "name": "Little Millet",
+    "local": "Kutki",
+    "cat": "grain",
+    "image": "assets/catalogue/little-millet.svg"
+  },
+  {
+    "name": "Barnyard Millet",
+    "local": "Sanwa",
+    "cat": "grain",
+    "image": "assets/catalogue/barnyard-millet.svg"
+  },
+  {
+    "name": "Kodo Millet",
+    "local": "Kodo",
+    "cat": "grain",
+    "image": "assets/catalogue/kodo-millet.svg"
+  },
+  {
+    "name": "Proso Millet",
+    "local": "Cheena",
+    "cat": "grain",
+    "image": "assets/catalogue/proso-millet.svg"
+  },
+  {
+    "name": "Rice Flour",
+    "local": "Rice Flour",
+    "cat": "grain",
+    "image": "assets/catalogue/rice-flour.svg"
+  },
+  {
+    "name": "Wheat Flour",
+    "local": "Atta",
+    "cat": "grain",
+    "image": "assets/catalogue/wheat-flour.svg"
+  },
+  {
+    "name": "Maize Flour",
+    "local": "Corn Flour",
+    "cat": "grain",
+    "image": "assets/catalogue/maize-flour.svg"
+  },
+  {
+    "name": "Chickpeas",
+    "local": "Chana",
+    "cat": "pulse",
+    "image": "assets/catalogue/chickpeas.svg"
+  },
+  {
+    "name": "Kabuli Chickpeas",
+    "local": "Kabuli Chana",
+    "cat": "pulse",
+    "image": "assets/catalogue/kabuli-chickpeas.svg"
+  },
+  {
+    "name": "Toor Dal",
+    "local": "Arhar Dal",
+    "cat": "pulse",
+    "image": "assets/catalogue/toor-dal.svg"
+  },
+  {
+    "name": "Moong Dal",
+    "local": "Green Gram Dal",
+    "cat": "pulse",
+    "image": "assets/catalogue/moong-dal.svg"
+  },
+  {
+    "name": "Urad Dal",
+    "local": "Black Gram Dal",
+    "cat": "pulse",
+    "image": "assets/catalogue/urad-dal.svg"
+  },
+  {
+    "name": "Masoor Dal",
+    "local": "Red Lentil",
+    "cat": "pulse",
+    "image": "assets/catalogue/masoor-dal.svg"
+  },
+  {
+    "name": "Chana Dal",
+    "local": "Split Bengal Gram",
+    "cat": "pulse",
+    "image": "assets/catalogue/chana-dal.svg"
+  },
+  {
+    "name": "Green Peas",
+    "local": "Matar",
+    "cat": "pulse",
+    "image": "assets/catalogue/green-peas.svg"
+  },
+  {
+    "name": "Kidney Beans",
+    "local": "Rajma",
+    "cat": "pulse",
+    "image": "assets/catalogue/kidney-beans.svg"
+  },
+  {
+    "name": "Black-Eyed Beans",
+    "local": "Lobia",
+    "cat": "pulse",
+    "image": "assets/catalogue/black-eyed-beans.svg"
+  },
+  {
+    "name": "Black Gram",
+    "local": "Urad Whole",
+    "cat": "pulse",
+    "image": "assets/catalogue/black-gram.svg"
+  },
+  {
+    "name": "Soybeans",
+    "local": "Soya Bean",
+    "cat": "pulse",
+    "image": "assets/catalogue/soybeans.svg"
+  },
+  {
+    "name": "Groundnuts",
+    "local": "Peanuts",
+    "cat": "other",
+    "image": "assets/catalogue/groundnuts.svg"
+  },
+  {
+    "name": "Sesame Seeds",
+    "local": "Til",
+    "cat": "other",
+    "image": "assets/catalogue/sesame-seeds.svg"
+  },
+  {
+    "name": "Flax Seeds",
+    "local": "Alsi",
+    "cat": "other",
+    "image": "assets/catalogue/flax-seeds.svg"
+  },
+  {
+    "name": "Sunflower Seeds",
+    "local": "Sunflower",
+    "cat": "other",
+    "image": "assets/catalogue/sunflower-seeds.svg"
+  },
+  {
+    "name": "Jaggery",
+    "local": "Gur",
+    "cat": "other",
+    "image": "assets/catalogue/jaggery.svg"
+  },
+  {
+    "name": "Cashew Nuts",
+    "local": "Kaju",
+    "cat": "other",
+    "image": "assets/catalogue/cashew-nuts.svg"
+  },
+  {
+    "name": "Almonds",
+    "local": "Badam",
+    "cat": "other",
+    "image": "assets/catalogue/almonds.svg"
+  },
+  {
+    "name": "Walnuts",
+    "local": "Akhrot",
+    "cat": "other",
+    "image": "assets/catalogue/walnuts.svg"
+  },
+  {
+    "name": "Mixed Herbs",
+    "local": "Indian Herbs",
+    "cat": "other",
+    "image": "assets/catalogue/mixed-herbs.svg"
+  },
+  {
+    "name": "Spice Blends",
+    "local": "Blended Spices",
+    "cat": "other",
+    "image": "assets/catalogue/spice-blends.svg"
+  }
+]
